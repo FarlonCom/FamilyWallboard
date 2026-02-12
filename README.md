@@ -1,52 +1,64 @@
 # Family Wallboard
 
-A modern, dark-themed family organization dashboard designed for wall-mounted displays. It provides real-time task management, calendar events, photo slideshows, and weather information for busy families.
+A modern family organization dashboard designed for wall-mounted displays. It provides real-time task management, calendar events, photo slideshows, and weather information for busy families.
 
 ## Features
 
 ### Wallboard Display
 - Full-screen display optimized for wall-mounted tablets/TVs
-- **Device-specific URLs** with unique access tokens (no login required)
-- **Card-based system** with configurable display cards
-- Round-robin rotation between cards with smooth fade transitions
+- **Display-specific URLs** with unique access tokens (no login required)
+- **Tile-based system** with configurable display tiles
+- Canvases rotate in sequence with smooth fade transitions, then loop around
+- Tiles can also rotate independently within a canvas
 - Real-time clock and weather display
-- Dark theme optimized for always-on displays
+- Dark and light themes
 
-### Device Management
-- Create multiple devices (e.g., "Kitchen TV", "Office Tablet")
-- Each device gets a unique secure URL
-- Configure screen resolution per device
-- Touch-enabled devices can mark tasks as completed
-- Track device last-seen timestamps
-- Enable/disable devices without deleting
+### Display Management
+- Create multiple displays (e.g., "Kitchen TV", "Office Tablet")
+- Each display gets a unique secure URL
+- Configure screen resolution per display
+- Touch-enabled displays can mark tasks as completed
+- Track display last-seen timestamps
+- Enable/disable displays without deleting
 
-### Card System
-- **Tasks Card**: Display family tasks with priorities and assignments
-- **Events Card**: Show upcoming calendar events
-- **Photos Card**: Slideshow with photo albums
-- **Weather Card**: Current conditions and forecast
-- Configurable display duration per card
-- Drag-and-drop card reordering
-- Card-specific settings (colors, filters, etc.)
+### Tile System
+- **Tasks Tile**: Display family tasks with priorities and assignments
+- **Events Tile**: Show upcoming calendar events
+- **Photos Tile**: Slideshow with photo albums
+- **Weather Tile**: Current conditions and forecast
+- Configurable display duration per tile
+- Drag-and-drop tile reordering
+- Tile-specific settings (colors, filters, etc.)
 
-### Card Templates
-- Create reusable card configurations
-- Apply templates to multiple devices
-- Customize settings per template
+### Canvases
+- Arrange tiles on a canvas to create a custom layout
+- A display shows canvases one by one, then loops around
+- Create reusable canvas configurations
+- Apply canvases to multiple displays
 
 ### Task Management
 - Create, edit, and complete tasks
+- Recurring tasks
 - Priority levels (High, Medium, Low) with color coding
 - Due dates with overdue detection
 - Multi-line descriptions
 - Family member assignment with color-coded avatars
-- Real-time synchronization across devices
+- Real-time synchronization across displays
+- **Google Tasks integration**
+
+### Motivation System
+- Assign points to tasks for completed work
+- Goal system with configurable waypoints
+- Each waypoint can have a custom prize
+- Track progress towards goals
 
 ### Calendar Events
 - Manual event creation and editing
+- Recurring events
 - All-day event support
 - Location and description fields
 - Time-based grouping (Today, Tomorrow, This Week)
+- **Google Calendar integration**
 
 ### Photo Albums & Display
 - Organize photos into albums
@@ -67,8 +79,9 @@ A modern, dark-themed family organization dashboard designed for wall-mounted di
 ### Settings & Administration
 - User management with admin roles
 - Family member management with invitations
-- Configurable display options per device
+- Configurable display options per display
 - Time zone and date/time format preferences
+- Dark and light theme support
 
 ## Getting Started
 
@@ -122,9 +135,9 @@ Options:
 ### First-Time Setup
 1. Navigate to `http://<your-ip>:5000/register`
 2. Create your account (first user becomes admin)
-3. Go to **Admin > Devices** to create your first device
-4. Copy the device URL and open it on your wall-mounted display
-5. Add cards to the device and configure their settings
+3. Go to **Admin > Displays** to create your first display
+4. Copy the display URL and open it on your wall-mounted screen
+5. Create a canvas, add tiles, and assign it to your display
 
 ## Usage
 
@@ -135,61 +148,62 @@ Options:
 4. **Events page** for calendar event management
 5. **Photos page** for photo uploads, albums, and management
 
-### Device Setup
-1. Go to **Admin > Devices**
-2. Click **Add Device** and configure:
-   - Device name (e.g., "Living Room TV")
+### Display Setup
+1. Go to **Admin > Displays**
+2. Click **Add Display** and configure:
+   - Display name (e.g., "Living Room TV")
    - Screen resolution
    - Touch capability
-3. Add cards to the device (Tasks, Events, Photos, Weather)
-4. Configure each card's settings
-5. Copy the device URL and open on your display
+3. Create a canvas and add tiles (Tasks, Events, Photos, Weather)
+4. Configure each tile's settings
+5. Copy the display URL and open on your screen
 
 ### Wallboard Display
-Each device has a unique URL:
+Each display has a unique URL:
 - No login required — the URL token provides access
-- Cards rotate automatically based on configured duration
+- Canvases rotate automatically, then loop around
+- Tiles can also rotate independently within a canvas
 - Displays current time and weather
-- Touch devices can interact with tasks
+- Touch displays can interact with tasks
 
 ### Kiosk Mode (Recommended for wall displays)
 ```bash
 # Chrome
-chrome --kiosk http://YOUR_SERVER:5000/wallboard/YOUR_DEVICE_TOKEN
+chrome --kiosk http://YOUR_SERVER:5000/wallboard/YOUR_DISPLAY_TOKEN
 
 # Edge
-msedge --kiosk http://YOUR_SERVER:5000/wallboard/YOUR_DEVICE_TOKEN
+msedge --kiosk http://YOUR_SERVER:5000/wallboard/YOUR_DISPLAY_TOKEN
 ```
 
 ## Configuration
 
-### Device Settings
-Each device can be configured with:
+### Display Settings
+Each display can be configured with:
 - Screen resolution (width × height)
 - Touch capability
 - Active/inactive status
-- Card selection and order
-- Per-card settings
+- Canvas assignment and order
+- Theme (dark or light)
 
-### Card Settings
-Each card type has specific settings:
+### Tile Settings
+Each tile type has specific settings:
 
-**Tasks Card**
+**Tasks Tile**
 - Background color
 - Show/hide completed tasks
 - Filter by family member
 
-**Events Card**
+**Events Tile**
 - Background color
 - Days ahead to show
 - Show/hide all-day events
 
-**Photos Card**
+**Photos Tile**
 - Album selection
 - Transition type (fade, slide)
 - Photo duration
 
-**Weather Card**
+**Weather Tile**
 - Location
 - Temperature unit
 - Show forecast
@@ -197,25 +211,28 @@ Each card type has specific settings:
 ## Roadmap
 
 ### Completed
-- [x] Card-based display architecture
-- [x] Device management with unique URLs
-- [x] Card templates
+- [x] Tile-based display architecture
+- [x] Display management with unique URLs
+- [x] Canvas system for tile layout and rotation
 - [x] User authentication with admin roles
 - [x] Task management with priorities and assignments
+- [x] Recurring tasks
+- [x] Google Tasks integration
 - [x] Event management
+- [x] Recurring events
+- [x] Google Calendar integration
 - [x] Photo albums with multi-assignment
 - [x] Photo focus position for cropping
-- [x] Wallboard display with round-robin rotation
+- [x] Wallboard display with canvas rotation
 - [x] Weather integration with Open-Meteo
 - [x] User and family member management
-- [x] Dark theme throughout
+- [x] Dark and light theme support
 - [x] Touch-enabled task completion
+- [x] Motivation system with points, goals, and prizes
 
 ### Planned
-- [ ] Google Calendar integration
-- [ ] Recurring tasks
 - [ ] Push notifications
-- [ ] Additional card types (clock, countdown, message board)
+- [ ] Additional tile types (clock, countdown, message board)
 - [ ] Task categories/tags
 - [ ] File attachments on tasks
 

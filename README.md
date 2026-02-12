@@ -231,14 +231,11 @@ Each tile type has specific settings:
 - [x] Motivation system with points, goals, and prizes
 
 ### Planned
-- [ ] Push notifications
-- [ ] Additional tile types (clock, countdown, message board)
-- [ ] Task categories/tags
-- [ ] File attachments on tasks
+- [ ] TBD
 
 ## License
 
-Copyright (c) 2024-2025 Farlon ApS. All rights reserved.
+Copyright (c) 2026 Farlon ApS. All rights reserved.
 
 This is proprietary software. Unauthorized copying, distribution, modification, or use of this software is strictly prohibited. See the [LICENSE](LICENSE) file for details.
 
